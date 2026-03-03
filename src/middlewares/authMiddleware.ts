@@ -19,6 +19,8 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
 
     const token = authHeader.split('Bearer ')[1];
 
+    console.log(`Debug Auth Middleware: admin.apps.length = ${admin.apps.length}`);
+
     try {
         const decodedToken = await admin.auth().verifyIdToken(token);
         req.user = decodedToken;

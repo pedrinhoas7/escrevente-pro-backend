@@ -19,7 +19,7 @@ export const listarClientes = async (req: Request, res: Response) => {
         const clientes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         res.status(200).json(clientes);
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao listar clientes', error });
+        res.status(500).json({ message: 'Erro ao listar clientes', error: (error as Error).message });
     }
 };
 
@@ -32,7 +32,7 @@ export const criarCliente = async (req: Request, res: Response) => {
         const docRef = await db.collection('clientes').add(novoCliente);
         res.status(201).json({ id: docRef.id, ...novoCliente });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao criar cliente', error });
+        res.status(500).json({ message: 'Erro ao criar cliente', error: (error as Error).message });
     }
 };
 
@@ -44,7 +44,7 @@ export const obterCliente = async (req: Request, res: Response) => {
         }
         res.status(200).json({ id: doc.id, ...doc.data() });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao obter cliente', error });
+        res.status(500).json({ message: 'Erro ao obter cliente', error: (error as Error).message });
     }
 };
 
@@ -53,7 +53,7 @@ export const atualizarCliente = async (req: Request, res: Response) => {
         await db.collection('clientes').doc(req.params.id).update(req.body);
         res.status(200).json({ message: 'Cliente atualizado com sucesso' });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao atualizar cliente', error });
+        res.status(500).json({ message: 'Erro ao atualizar cliente', error: (error as Error).message });
     }
 };
 
@@ -62,6 +62,6 @@ export const deletarCliente = async (req: Request, res: Response) => {
         await db.collection('clientes').doc(req.params.id).delete();
         res.status(200).json({ message: 'Cliente deletado com sucesso' });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao deletar cliente', error });
+        res.status(500).json({ message: 'Erro ao deletar cliente', error: (error as Error).message });
     }
 };

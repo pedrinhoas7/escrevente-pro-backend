@@ -62,7 +62,7 @@ export const listarProcessos = async (req: Request, res: Response) => {
 
         res.status(200).json(processos);
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao listar processos', error });
+        res.status(500).json({ message: 'Erro ao listar processos', error: (error as Error).message });
     }
 };
 
@@ -85,8 +85,8 @@ export const criarProcesso = async (req: Request, res: Response) => {
 
         res.status(201).json({ id: docRef.id, ...novoProcesso });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro ao criar processo', error });
+        console.error('Erro ao criar processo:', (error as Error).message);
+        res.status(500).json({ message: 'Erro ao criar processo', error: (error as Error).message });
     }
 };
 
@@ -104,7 +104,7 @@ export const obterProcesso = async (req: Request, res: Response) => {
 
         res.status(200).json({ ...processo, statusHistory });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao obter processo', error });
+        res.status(500).json({ message: 'Erro ao obter processo', error: (error as Error).message });
     }
 };
 
@@ -113,7 +113,7 @@ export const atualizarProcesso = async (req: Request, res: Response) => {
         await db.collection('processos').doc(req.params.id).update(req.body);
         res.status(200).json({ message: 'Processo atualizado com sucesso' });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao atualizar processo', error });
+        res.status(500).json({ message: 'Erro ao atualizar processo', error: (error as Error).message });
     }
 };
 
@@ -141,7 +141,7 @@ export const adicionarStatus = async (req: Request, res: Response) => {
         await db.collection('processos').doc(id).collection('statusProcesso').add(novoStatus);
         res.status(201).json(novoStatus);
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao adicionar status', error });
+        res.status(500).json({ message: 'Erro ao adicionar status', error: (error as Error).message });
     }
 };
 
@@ -168,7 +168,7 @@ export const consultarPorProtocolo = async (req: Request, res: Response) => {
 
         res.status(200).json({ ...processoPublico, statusHistory });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro na consulta pública', error });
+        console.error('Erro na consulta pública:', (error as Error).message);
+        res.status(500).json({ message: 'Erro na consulta pública', error: (error as Error).message });
     }
 };

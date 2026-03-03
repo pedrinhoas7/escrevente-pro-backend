@@ -1,0 +1,4 @@
+node_modules
+.env
+escrevente-pro-firebase-adminsdk.json
+dist

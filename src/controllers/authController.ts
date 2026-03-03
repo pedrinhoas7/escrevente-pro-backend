@@ -9,6 +9,11 @@ const API_KEY = process.env.FIREBASE_API_KEY;
 export const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
+    console.log('--- Debug Login ---');
+    console.log(`API Key (last 4 chars): ${API_KEY ? API_KEY.slice(-4) : 'N/A'}`);
+    console.log(`Attempting login for email: ${email}`);
+    console.log('--- End Debug ---');
+
     if (!email || !password) {
         return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
     }
@@ -33,7 +38,7 @@ export const login = async (req: Request, res: Response) => {
         });
 
     } catch (error: any) {
-        console.error('Erro no login:', error.response ? error.response.data : error.message);
+        console.error('Erro no login (detalhes):', error.response ? error.response.data : error.message);
         res.status(401).json({ message: 'Credenciais inválidas ou erro no servidor de autenticação.' });
     }
 };

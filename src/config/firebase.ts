@@ -11,40 +11,40 @@ const config: admin.AppOptions = {
     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
 };
 
-if (process.env.FIREBASE_SERVICE_ACCOUNT_PATH) {
-    let serviceAccountLoaded = false;
-    let serviceAccount: any;
+let serviceAccountLoaded = false;
 
-    // Tentar carregar como JSON direto (para Vercel)
+// Tenta carregar a Service Account do JSON direto da variável de ambiente (Vercel)
+if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
     try {
-        console.log("ℹ️  Tentando carregar Service Account como JSON direto da variável de ambiente...");
-        serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_PATH);
+        console.log("ℹ️  Tentando carregar Service Account de FIREBASE_SERVICE_ACCOUNT_JSON...");
+        const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
         config.credential = admin.credential.cert(serviceAccount);
         serviceAccountLoaded = true;
-        console.log(`✅ Service Account carregada como JSON do ambiente.`);
+        console.log(`✅ Service Account carregada de FIREBASE_SERVICE_ACCOUNT_JSON.`);
     } catch (jsonParseError: any) {
-        console.warn(`\n⚠️  AVISO: Falha ao fazer parse da Service Account como JSON direto. Erro: ${jsonParseError.message}`);
-        // Se falhar, tentar ler como arquivo (para ambiente local)
-        try {
-            console.log("ℹ️  Tentando carregar Service Account de um arquivo...");
-            const absoluteServiceAccountPath = path.resolve(process.cwd(), process.env.FIREBASE_SERVICE_ACCOUNT_PATH);
-            const serviceAccountContent = fs.readFileSync(absoluteServiceAccountPath, 'utf8');
-            serviceAccount = JSON.parse(serviceAccountContent);
-            config.credential = admin.credential.cert(serviceAccount);
-            serviceAccountLoaded = true;
-            console.log(`✅ Service Account carregada de arquivo: ${absoluteServiceAccountPath}`);
-        } catch (fileReadError: any) {
-            console.warn(`\n⚠️  AVISO: Falha ao carregar Service Account do caminho: "${process.env.FIREBASE_SERVICE_ACCOUNT_PATH}"`);
-            console.warn(`   Erro: ${fileReadError.message}`);
-        }
+        console.warn(`\n⚠️  AVISO: Falha ao fazer parse de FIREBASE_SERVICE_ACCOUNT_JSON. Erro: ${jsonParseError.message}`);
     }
+}
 
-    if (!serviceAccountLoaded) {
-        console.warn(`   Nenhuma Service Account válida foi carregada. Usando Application Default Credentials.\n`);
-        config.credential = admin.credential.applicationDefault();
+// Se não carregou do JSON direto, tenta carregar de um arquivo (Local)
+if (!serviceAccountLoaded && process.env.FIREBASE_SERVICE_ACCOUNT_PATH) {
+    try {
+        console.log("ℹ️  FIREBASE_SERVICE_ACCOUNT_PATH está definido. Tentando carregar Service Account de um arquivo...");
+        const absoluteServiceAccountPath = path.resolve(process.cwd(), process.env.FIREBASE_SERVICE_ACCOUNT_PATH);
+        const serviceAccountContent = fs.readFileSync(absoluteServiceAccountPath, 'utf8');
+        const serviceAccount = JSON.parse(serviceAccountContent);
+        config.credential = admin.credential.cert(serviceAccount);
+        serviceAccountLoaded = true;
+        console.log(`✅ Service Account carregada de arquivo: ${absoluteServiceAccountPath}`);
+    } catch (fileReadError: any) {
+        console.warn(`\n⚠️  AVISO: Falha ao carregar Service Account do caminho: "${process.env.FIREBASE_SERVICE_ACCOUNT_PATH}"`);
+        console.warn(`   Erro: ${fileReadError.message}`);
     }
-} else {
-    console.log("ℹ️  Variável FIREBASE_SERVICE_ACCOUNT_PATH não definida. Usando Application Default Credentials.");
+}
+
+// Fallback se nenhuma Service Account foi carregada
+if (!serviceAccountLoaded) {
+    console.log("ℹ️  Nenhuma Service Account válida foi carregada. Usando Application Default Credentials.");
     config.credential = admin.credential.applicationDefault();
 }
 

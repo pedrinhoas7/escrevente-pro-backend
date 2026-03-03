@@ -5,10 +5,6 @@ import path from 'path'; // Manter para o cenário local
 
 dotenv.config();
 
-// Debug: Verificar se a variável de ambiente do Vercel está acessível
-const saJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
-console.log(`Debug Firebase SA JSON: Início: ${saJson?.substring(0, 30)}, Fim: ${saJson?.slice(-30)}`);
-
 const config: admin.AppOptions = {
     credential: admin.credential.applicationDefault(),
     projectId: process.env.FIREBASE_PROJECT_ID,

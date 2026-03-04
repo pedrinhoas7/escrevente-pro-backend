@@ -5,7 +5,8 @@ import {
     obterProcesso,
     atualizarProcesso,
     adicionarStatus,
-    consultarPorProtocolo
+    consultarPorProtocolo,
+    listarTiposAto
 } from '../controllers/processoController';
 import { authenticate } from '../middlewares/authMiddleware';
 
@@ -17,6 +18,7 @@ router.get('/consulta/:protocolo', consultarPorProtocolo);
 // Rotas protegidas
 router.use(authenticate);
 
+router.get('/tipos-ato', listarTiposAto);
 router.get('/', listarProcessos);
 router.post('/', criarProcesso);
 router.get('/:id', obterProcesso);
@@ -24,3 +26,4 @@ router.put('/:id', atualizarProcesso);
 router.post('/:id/status', adicionarStatus);
 
 export default router;
+

@@ -37,3 +37,34 @@ export const login = async (req: Request, res: Response) => {
         res.status(401).json({ message: 'Credenciais inválidas ou erro no servidor de autenticação.' });
     }
 };
+
+export const refreshToken = async (req: Request, res: Response) => {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken) {
+        return res.status(400).json({ message: 'Refresh token é obrigatório.' });
+    }
+
+    try {
+        const response = await axios.post(
+            `https://securetoken.googleapis.com/v1/token?key=${API_KEY}`,
+            {
+                grant_type: 'refresh_token',
+                refresh_token: refreshToken
+            }
+        );
+
+        const { id_token, user_id, refresh_token, expires_in } = response.data;
+
+        res.status(200).json({
+            token: id_token,
+            userId: user_id,
+            refreshToken: refresh_token,
+            expiresIn: expires_in
+        });
+
+    } catch (error: any) {
+        console.error('Erro ao renovar token:', error.response ? error.response.data : error.message);
+        res.status(401).json({ message: 'Refresh token inválido ou expirado.' });
+    }
+};

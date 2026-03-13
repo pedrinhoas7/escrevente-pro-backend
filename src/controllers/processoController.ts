@@ -18,6 +18,8 @@ interface Processo {
     partes: Partes;
     clienteId: string;
     notasInternas?: string;
+    valorProcesso?: number;
+    valorEmolumentos?: number;
     criadoEm: admin.firestore.Timestamp;
     userId: string; 
 }
@@ -71,11 +73,22 @@ export const listarProcessos = async (req: Request, res: Response) => {
                     ...s.data()
                 }));
 
-                return {
+                let processoFormatado: any = {
                     id: doc.id,
                     ...doc.data(),
                     statusHistory        
                 };
+
+                if (processoFormatado.valorProcesso !== undefined) {
+                    const comissaoApresentante = processoFormatado.valorProcesso * 0.30;
+                    const comissaoEscrevente = processoFormatado.valorProcesso * 0.10;
+                    processoFormatado = {
+                        ...processoFormatado,
+                        comissaoApresentante,
+                        comissaoEscrevente,
+                    };
+                }
+                return processoFormatado;
             })
         );
 
@@ -91,7 +104,7 @@ export const criarProcesso = async (req: Request, res: Response) => {
         if (!userId) {
             return res.status(401).json({ message: 'User not authenticated.' });
         }
-        const { tipoAto, dataEntrada, ...rest } = req.body;
+        const { tipoAto, dataEntrada, valorProcesso, valorEmolumentos, ...rest } = req.body;
 
         if (!TIPOS_ATO_PERMITIDOS.includes(tipoAto)) {
             return res.status(400).json({ message: 'Tipo de Ato inválido.' });
@@ -101,6 +114,8 @@ export const criarProcesso = async (req: Request, res: Response) => {
             ...rest,
             tipoAto,
             dataEntrada: admin.firestore.Timestamp.fromDate(new Date(dataEntrada)),
+            valorProcesso: valorProcesso ? Number(valorProcesso) : undefined,
+            valorEmolumentos: valorEmolumentos ? Number(valorEmolumentos) : undefined,
             criadoEm: admin.firestore.Timestamp.now(),
             userId: userId,
         };
@@ -137,7 +152,20 @@ export const obterProcesso = async (req: Request, res: Response) => {
         const statusSnapshot = await docRef.collection('statusProcesso').orderBy('data', 'desc').get();
         const statusHistory = statusSnapshot.docs.map(s => ({ id: s.id, ...s.data() }));
 
-        res.status(200).json({ id: doc.id, ...processo, statusHistory });
+        let processoFormatado: any = { id: doc.id, ...processo, statusHistory };
+
+        // Adicionar informações de comissão apenas para escreventes logados
+        if (processo.valorProcesso !== undefined) {
+            const comissaoApresentante = processo.valorProcesso * 0.30;
+            const comissaoEscrevente = processo.valorProcesso * 0.10;
+            processoFormatado = {
+                ...processoFormatado,
+                comissaoApresentante,
+                comissaoEscrevente,
+            };
+        }
+
+        res.status(200).json(processoFormatado);
     } catch (error) {
         res.status(500).json({ message: 'Erro ao obter processo', error: (error as Error).message });
     }
@@ -158,7 +186,17 @@ export const atualizarProcesso = async (req: Request, res: Response) => {
             return res.status(403).json({ message: 'Acesso negado.' });
         }
 
-        await docRef.update(req.body);
+        const { tipoAto, dataEntrada, valorProcesso, valorEmolumentos, ...rest } = req.body;
+
+        const dadosAtualizados: Partial<Processo> = {
+            ...rest,
+            ...(tipoAto && { tipoAto }),
+            ...(dataEntrada && { dataEntrada: admin.firestore.Timestamp.fromDate(new Date(dataEntrada)) }),
+            ...(valorProcesso !== undefined && { valorProcesso: Number(valorProcesso) }),
+            ...(valorEmolumentos !== undefined && { valorEmolumentos: Number(valorEmolumentos) }),
+        };
+
+        await docRef.update(dadosAtualizados);
         res.status(200).json({ message: 'Processo atualizado com sucesso' });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao atualizar processo', error: (error as Error).message });

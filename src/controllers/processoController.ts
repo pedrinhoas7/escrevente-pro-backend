@@ -79,9 +79,9 @@ export const listarProcessos = async (req: Request, res: Response) => {
                     statusHistory        
                 };
 
-                if (processoFormatado.valorProcesso !== undefined) {
-                    const comissaoApresentante = processoFormatado.valorProcesso * 0.30;
-                    const comissaoEscrevente = processoFormatado.valorProcesso * 0.10;
+                if (processoFormatado.valorEmolumentos !== undefined) {
+                    const comissaoApresentante = processoFormatado.valorEmolumentos * 0.30;
+                    const comissaoEscrevente = processoFormatado.valorEmolumentos * 0.10;
                     processoFormatado = {
                         ...processoFormatado,
                         comissaoApresentante,
@@ -155,9 +155,9 @@ export const obterProcesso = async (req: Request, res: Response) => {
         let processoFormatado: any = { id: doc.id, ...processo, statusHistory };
 
         // Adicionar informações de comissão apenas para escreventes logados
-        if (processo.valorProcesso !== undefined) {
-            const comissaoApresentante = processo.valorProcesso * 0.30;
-            const comissaoEscrevente = processo.valorProcesso * 0.10;
+        if (processo.valorEmolumentos !== undefined) {
+            const comissaoApresentante = processo.valorEmolumentos * 0.30;
+            const comissaoEscrevente = processo.valorEmolumentos * 0.10;
             processoFormatado = {
                 ...processoFormatado,
                 comissaoApresentante,
@@ -263,5 +263,32 @@ export const consultarPorProtocolo = async (req: Request, res: Response) => {
     } catch (error) {
         console.error('Erro na consulta pública:', (error as Error).message);
         res.status(500).json({ message: 'Erro na consulta pública', error: (error as Error).message });
+    }
+};
+
+export const removerStatus = async (req: Request, res: Response) => {
+    const { processoId, statusId } = req.params;
+    const userId = req.user?.uid;
+
+    try {
+        const processoRef = db.collection('processos').doc(processoId);
+        const processoDoc = await processoRef.get();
+
+        if (!processoDoc.exists) {
+            return res.status(404).json({ message: 'Processo não encontrado.' });
+        }
+
+        const processo = processoDoc.data() as Processo;
+        if (processo.userId !== userId) {
+            return res.status(403).json({ message: 'Acesso negado.' });
+        }
+
+        const statusRef = processoRef.collection('statusProcesso').doc(statusId);
+        await statusRef.delete();
+
+        res.status(200).json({ message: 'Status removido com sucesso.' });
+    } catch (error) {
+        console.error('Erro ao remover status:', (error as Error).message);
+        res.status(500).json({ message: 'Erro ao remover status', error: (error as Error).message });
     }
 };

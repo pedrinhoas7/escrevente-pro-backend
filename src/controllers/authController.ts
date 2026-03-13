@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { auth } from '../config/firebase'; // Importar auth do firebase admin
 
 dotenv.config();
 
@@ -25,11 +26,16 @@ export const login = async (req: Request, res: Response) => {
 
         const { idToken, localId, refreshToken, expiresIn } = response.data;
 
+        // Decodificar o ID Token para obter as claims (incluindo o role)
+        const decodedToken = await auth.verifyIdToken(idToken);
+        const userRole = decodedToken.role || 'usuario'; // Default role, if not set
+
         res.status(200).json({
             token: idToken,
             userId: localId,
             refreshToken,
-            expiresIn
+            expiresIn,
+            userRole, // Incluir o role na resposta
         });
 
     } catch (error: any) {
@@ -56,11 +62,16 @@ export const refreshToken = async (req: Request, res: Response) => {
 
         const { id_token, user_id, refresh_token, expires_in } = response.data;
 
+        // Decodificar o ID Token para obter as claims (incluindo o role)
+        const decodedToken = await auth.verifyIdToken(id_token);
+        const userRole = decodedToken.role || 'usuario'; // Default role, if not set
+
         res.status(200).json({
             token: id_token,
             userId: user_id,
             refreshToken: refresh_token,
-            expiresIn: expires_in
+            expiresIn: expires_in,
+            userRole, // Incluir o role na resposta
         });
 
     } catch (error: any) {

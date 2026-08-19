@@ -40,6 +40,11 @@ const STATUS_PERMITIDOS = [
     "Falta de documento",
     "Indeferido",
     "Aguardando assinatura",
+    "Aguardando Pagamento",
+    "Boleto Pago",
+    "Assinado",
+    "Enviado para registro",
+    "Registrado",
     "Documentação entregue ao cliente",
     "Concluído / Registrado"
 ];
@@ -54,8 +59,23 @@ export const listarProcessos = async (req: Request, res: Response) => {
         if (!userId) {
             return res.status(401).json({ message: 'User not authenticated.' });
         }
+
+        const userRole = (req.user as any)?.role || 'usuario';
+        const cartorioId = (req.user as any)?.cartorioId || null;
+
+        let targetUids: string[] = [userId];
+
+        if (userRole === 'cartorio' && cartorioId) {
+            const usersSnapshot = await db.collection('users')
+                .where('cartorioId', '==', cartorioId)
+                .where('role', '==', 'escrevente')
+                .get();
+            targetUids = usersSnapshot.docs.map(doc => doc.id);
+            if (targetUids.length === 0) return res.status(200).json([]);
+        }
+
         const snapshot = await db.collection('processos')
-            .where('userId', '==', userId)
+            .where('userId', 'in', targetUids)
             .orderBy('criadoEm', 'desc')
             .get();
 
@@ -290,5 +310,32 @@ export const removerStatus = async (req: Request, res: Response) => {
     } catch (error) {
         console.error('Erro ao remover status:', (error as Error).message);
         res.status(500).json({ message: 'Erro ao remover status', error: (error as Error).message });
+    }
+};
+
+export const deletarProcesso = async (req: Request, res: Response) => {
+    try {
+        const userId = req.user?.uid;
+        const docRef = db.collection('processos').doc(req.params.id);
+        const doc = await docRef.get();
+
+        if (!doc.exists) {
+            return res.status(404).json({ message: 'Processo não encontrado' });
+        }
+
+        const processo = doc.data() as Processo;
+        if (processo.userId !== userId) {
+            return res.status(403).json({ message: 'Acesso negado.' });
+        }
+
+        const statusSnapshot = await docRef.collection('statusProcesso').get();
+        const batch = db.batch();
+        statusSnapshot.docs.forEach(s => batch.delete(s.ref));
+        batch.delete(docRef);
+        await batch.commit();
+
+        res.status(200).json({ message: 'Processo deletado com sucesso' });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao deletar processo', error: (error as Error).message });
     }
 };

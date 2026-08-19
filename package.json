@@ -7,7 +7,13 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "build": "tsc",
-    "seed:admin": "ts-node src/scripts/createAdmin.ts"
+    "seed:admin": "ts-node src/scripts/createAdmin.ts",
+    "migrate": "ts-node src/scripts/migrarDados.ts",
+    "fix-dates": "ts-node src/scripts/corrigirDatas.ts",
+    "fix-apresentantes": "ts-node src/scripts/corrigirApresentantes.ts",
+    "fix-client-dates": "ts-node src/scripts/corrigirDatasClientes.ts",
+    "mark-concluded": "ts-node src/scripts/marcarConcluidos.ts",
+    "remove-entrada": "ts-node src/scripts/removerStatusEntrada.ts"
   },
   "keywords": [],
   "author": "Escrevente Pro",

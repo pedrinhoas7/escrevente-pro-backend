@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { auth } from '../config/firebase'; // Importar auth do firebase admin
+import { auth, db } from '../config/firebase';
 
 dotenv.config();
 
@@ -26,16 +26,29 @@ export const login = async (req: Request, res: Response) => {
 
         const { idToken, localId, refreshToken, expiresIn } = response.data;
 
-        // Decodificar o ID Token para obter as claims (incluindo o role)
         const decodedToken = await auth.verifyIdToken(idToken);
-        const userRole = decodedToken.role || 'usuario'; // Default role, if not set
+        const userRole = decodedToken.role || 'usuario';
+        const cartorioId = (decodedToken as any).cartorioId || null;
+
+        const userDocRef = db.collection('users').doc(localId);
+        const userDoc = await userDocRef.get();
+        if (!userDoc.exists) {
+            await userDocRef.set({
+                email,
+                nome: decodedToken.name || email,
+                role: userRole,
+                cartorioId: cartorioId || (userRole === 'cartorio' ? localId : null),
+                criadoEm: new Date(),
+            });
+        }
 
         res.status(200).json({
             token: idToken,
             userId: localId,
             refreshToken,
             expiresIn,
-            userRole, // Incluir o role na resposta
+            userRole,
+            cartorioId,
         });
 
     } catch (error: any) {
@@ -62,16 +75,17 @@ export const refreshToken = async (req: Request, res: Response) => {
 
         const { id_token, user_id, refresh_token, expires_in } = response.data;
 
-        // Decodificar o ID Token para obter as claims (incluindo o role)
         const decodedToken = await auth.verifyIdToken(id_token);
-        const userRole = decodedToken.role || 'usuario'; // Default role, if not set
+        const userRole = decodedToken.role || 'usuario';
+        const cartorioId = (decodedToken as any).cartorioId || null;
 
         res.status(200).json({
             token: id_token,
             userId: user_id,
             refreshToken: refresh_token,
             expiresIn: expires_in,
-            userRole, // Incluir o role na resposta
+            userRole,
+            cartorioId,
         });
 
     } catch (error: any) {

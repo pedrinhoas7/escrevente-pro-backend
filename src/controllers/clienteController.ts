@@ -20,7 +20,22 @@ export const listarClientes = async (req: Request, res: Response) => {
         if (!userId) {
             return res.status(401).json({ message: 'User not authenticated.' });
         }
-        const snapshot = await db.collection('clientes').where('userId', '==', userId).get();
+
+        const userRole = (req.user as any)?.role || 'usuario';
+        const cartorioId = (req.user as any)?.cartorioId || null;
+
+        let targetUids: string[] = [userId];
+
+        if (userRole === 'cartorio' && cartorioId) {
+            const usersSnapshot = await db.collection('users')
+                .where('cartorioId', '==', cartorioId)
+                .where('role', '==', 'escrevente')
+                .get();
+            targetUids = usersSnapshot.docs.map(doc => doc.id);
+            if (targetUids.length === 0) return res.status(200).json([]);
+        }
+
+        const snapshot = await db.collection('clientes').where('userId', 'in', targetUids).get();
         const clientes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         res.status(200).json(clientes);
     } catch (error) {

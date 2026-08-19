@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import clienteRoutes from './routes/clienteRoutes';
 import processoRoutes from './routes/processoRoutes';
+import escreventeRoutes from './routes/escreventeRoutes';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/processos', processoRoutes);
+app.use('/api/escreventes', escreventeRoutes);
 
 app.get('/', (req, res) => {
     res.send('Escrevente Pro API - Online');

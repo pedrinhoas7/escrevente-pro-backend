@@ -1,0 +1,1115 @@
+{
+  "clientes": [
+  {
+    "nome": "TARCISIO",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "ALESSA",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "MARITIAM",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "WANDERLEY",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "MICHELLY",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "JOSEPH",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "BÁRBARA",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "Desconhecido",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "JOSÉ VALDEREIS",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "JOBSON",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "DAIANE",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "MAX",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "BARBÁRA",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "RONIO",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "CLIENTE",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "JENNIFER",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "RUBENS",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "JESSICA",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "JOANA",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  },
+  {
+    "nome": "NADJA",
+    "cpf": null,
+    "telefone": null,
+    "email": null,
+    "endereco": null
+  }
+],
+  "processos": [
+    {
+      "clienteNome": "JOAO PAULO MORAIS DE MEDEIROS",
+      "protocolo": "1",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-03",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "JOAO PAULO MORAIS DE MEDEIROS",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "TARCISIO"
+      },
+      "valorProcesso": 299336,
+      "valorEmolumentos": 2993.36,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "RAIMUNDA CLEIDE BATISTA DE OLIVEIRA",
+      "protocolo": "2",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-03",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "RAIMUNDA CLEIDE BATISTA DE OLIVEIRA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "ALESSA"
+      },
+      "valorProcesso": 377637,
+      "valorEmolumentos": 3776.37,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "PAULA SANTOS DE OLIVEIRA",
+      "protocolo": "3",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-05",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "PAULA SANTOS DE OLIVEIRA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "MARITIAM"
+      },
+      "valorProcesso": 500490,
+      "valorEmolumentos": 5004.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "LUANA DA SILVA LOUREIRO BORGES",
+      "protocolo": "4",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-13",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "LUANA DA SILVA LOUREIRO BORGES",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 245490,
+      "valorEmolumentos": 2454.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "JULIO CESAR",
+      "protocolo": "5",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-17",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "JULIO CESAR",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "MICHELLY"
+      },
+      "valorProcesso": 1460490,
+      "valorEmolumentos": 14604.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "VITAL ARAUJO DA SILVA FILHO",
+      "protocolo": "6",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-19",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "VITAL ARAUJO DA SILVA FILHO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOSEPH"
+      },
+      "valorProcesso": 510285,
+      "valorEmolumentos": 5102.85,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "HUBER DANUBIO CORREIA DANOWSKI",
+      "protocolo": "7",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-26",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "HUBER DANUBIO CORREIA DANOWSKI",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "MARITIAM"
+      },
+      "valorProcesso": 283500,
+      "valorEmolumentos": 2835,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MARIA RAQUEL SOUZA MARTINEZ",
+      "protocolo": "8",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-26",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MARIA RAQUEL SOUZA MARTINEZ",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BÁRBARA"
+      },
+      "valorProcesso": 515490,
+      "valorEmolumentos": 5154.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Desconhecido",
+      "protocolo": "9",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-03-27",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Desconhecido",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "Desconhecido"
+      },
+      "valorProcesso": 522196,
+      "valorEmolumentos": 5221.96,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "IVANELSON LOBATO DOS SANTOS",
+      "protocolo": "10",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-06",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "IVANELSON LOBATO DOS SANTOS",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOSÉ VALDEREIS"
+      },
+      "valorProcesso": 0,
+      "valorEmolumentos": null,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "ALEKSANDER QUEIROZ FEDER",
+      "protocolo": "11",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-24",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "ALEKSANDER QUEIROZ FEDER",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BÁRBARA"
+      },
+      "valorProcesso": 430815,
+      "valorEmolumentos": 4308.15,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "12",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-30",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 224164,
+      "valorEmolumentos": 2241.64,
+      "notasInternas": "APTO 106",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "13",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-30",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 224164,
+      "valorEmolumentos": 2241.64,
+      "notasInternas": "APTO 102",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "14",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-30",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 235202,
+      "valorEmolumentos": 2352.02,
+      "notasInternas": "APTO 104",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "15",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-04",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 225745,
+      "valorEmolumentos": 2257.45,
+      "notasInternas": "APTO 301",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "16",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-04",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 232303,
+      "valorEmolumentos": 2323.03,
+      "notasInternas": "APTO 205",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "17",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-04",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 233041,
+      "valorEmolumentos": 2330.41,
+      "notasInternas": "APTO 303",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Judivan Fabio De Morais",
+      "protocolo": "18",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-24",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Judivan Fabio De Morais",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 215490,
+      "valorEmolumentos": 2154.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Martins Ribeiro Administração De Bens Ltda",
+      "protocolo": "19",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-04-09",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Martins Ribeiro Administração De Bens Ltda",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOBSON"
+      },
+      "valorProcesso": 1774553,
+      "valorEmolumentos": 17745.53,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "LPS ADMINISTRACAO DE BENS PROPRIOS LTDA",
+      "protocolo": "20",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-05",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "LPS ADMINISTRACAO DE BENS PROPRIOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "ALESSA"
+      },
+      "valorProcesso": 457632,
+      "valorEmolumentos": 4576.32,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "THIAGO HENRIQUE ANTUNES MARANHAO BEZERRA",
+      "protocolo": "21",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-11",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "THIAGO HENRIQUE ANTUNES MARANHAO BEZERRA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BÁRBARA"
+      },
+      "valorProcesso": 680490,
+      "valorEmolumentos": 6804.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "GERALDINA BARBOSA",
+      "protocolo": "22",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-07",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "GERALDINA BARBOSA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "DAIANE"
+      },
+      "valorProcesso": 657990,
+      "valorEmolumentos": 6579.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CONSINTEC EMPREENDIMENTOS LTDA",
+      "protocolo": "23",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-12",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CONSINTEC EMPREENDIMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 225745,
+      "valorEmolumentos": 2257.45,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "SEBASTIAO DE OLIVEIRA PERERA",
+      "protocolo": "24",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-05-29",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "SEBASTIAO DE OLIVEIRA PERERA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "MAX"
+      },
+      "valorProcesso": 780897,
+      "valorEmolumentos": 7808.97,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Desconhecido",
+      "protocolo": "25",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-01",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Desconhecido",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "Desconhecido"
+      },
+      "valorProcesso": 1774553,
+      "valorEmolumentos": 17745.53,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Desconhecido",
+      "protocolo": "26",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-02",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Desconhecido",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "Desconhecido"
+      },
+      "valorProcesso": 224164,
+      "valorEmolumentos": 2241.64,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MARCELO HOLFF",
+      "protocolo": "27",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-08",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MARCELO HOLFF",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BARBÁRA"
+      },
+      "valorProcesso": 515490,
+      "valorEmolumentos": 5154.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "ISMAR DE MOURA CAMARA",
+      "protocolo": "28",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-05",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "ISMAR DE MOURA CAMARA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOSÉ VALDEREIS"
+      },
+      "valorProcesso": 785490,
+      "valorEmolumentos": 7854.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CAIO WILLIAM BATISTA DOS SANTOS",
+      "protocolo": "29",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-02",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CAIO WILLIAM BATISTA DOS SANTOS",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 225906,
+      "valorEmolumentos": 2259.06,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "L. Z. G. REFLORESTAMENTOS LTDA",
+      "protocolo": "30",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-09",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "L. Z. G. REFLORESTAMENTOS LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BÁRBARA"
+      },
+      "valorProcesso": 665490,
+      "valorEmolumentos": 6654.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "FRANCISCO ROBERIK MOREIRA",
+      "protocolo": "31",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-10",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "FRANCISCO ROBERIK MOREIRA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 227673,
+      "valorEmolumentos": 2276.73,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MATHEUS ALVES COSTA",
+      "protocolo": "32",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-06-10",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MATHEUS ALVES COSTA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BÁRBARA"
+      },
+      "valorProcesso": 440490,
+      "valorEmolumentos": 4404.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "FABIO PEREIRA CARNEIRO",
+      "protocolo": "33",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-08",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "FABIO PEREIRA CARNEIRO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 280221,
+      "valorEmolumentos": 2802.21,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "PHELLIPY BRANDAO LAUREDO",
+      "protocolo": "34",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-14",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "PHELLIPY BRANDAO LAUREDO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 278806,
+      "valorEmolumentos": 2788.06,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Desconhecido",
+      "protocolo": "35",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-15",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Desconhecido",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "Desconhecido"
+      },
+      "valorProcesso": 575490,
+      "valorEmolumentos": 5754.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "VALDENICE BEZERRA ALVES",
+      "protocolo": "36",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-16",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "VALDENICE BEZERRA ALVES",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 296958,
+      "valorEmolumentos": 2969.58,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "Valmir Manoel da Silva",
+      "protocolo": "37",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-20",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "Valmir Manoel da Silva",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 145352,
+      "valorEmolumentos": 1453.52,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "ALDIR RIBEIRO DOS SANTOS",
+      "protocolo": "38",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-21",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "ALDIR RIBEIRO DOS SANTOS",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "ALESSA"
+      },
+      "valorProcesso": 1774553,
+      "valorEmolumentos": 17745.53,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "HERMINEGILDO REMIGIO DA ROCHA NETO",
+      "protocolo": "39",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-22",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "HERMINEGILDO REMIGIO DA ROCHA NETO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "RONIO"
+      },
+      "valorProcesso": 549175,
+      "valorEmolumentos": 5491.75,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "DEBORA DE PAULA FEDER",
+      "protocolo": "40",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-22",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "DEBORA DE PAULA FEDER",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "BÁRBARA"
+      },
+      "valorProcesso": 430815,
+      "valorEmolumentos": 4308.15,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "JOAO MARIA LOBO MAIA FILHO",
+      "protocolo": "41",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-24",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "JOAO MARIA LOBO MAIA FILHO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "CLIENTE"
+      },
+      "valorProcesso": 785490,
+      "valorEmolumentos": 7854.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "LIANE ALVES DE ALEMIDA AMERICO",
+      "protocolo": "42",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-29",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "LIANE ALVES DE ALEMIDA AMERICO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "TARCISIO"
+      },
+      "valorProcesso": 432990,
+      "valorEmolumentos": 4329.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "PAULO EMANUEL SILVA",
+      "protocolo": "43",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-29",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "PAULO EMANUEL SILVA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "RONIO"
+      },
+      "valorProcesso": 440490,
+      "valorEmolumentos": 4404.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "VALDENICE BEZERRA ALVES",
+      "protocolo": "44",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-07-28",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "VALDENICE BEZERRA ALVES",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 249690,
+      "valorEmolumentos": 2496.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "RAFAEL GONÇALVES FERREIRA DE OLIVEIRA",
+      "protocolo": "45",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-03",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "RAFAEL GONÇALVES FERREIRA DE OLIVEIRA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 217034,
+      "valorEmolumentos": 2170.34,
+      "notasInternas": "pago em 03/08",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CARLOS EDUARDO MILANO BARBOSA GONCALVES MARTINS",
+      "protocolo": "46",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-03",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CARLOS EDUARDO MILANO BARBOSA GONCALVES MARTINS",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": ""
+      },
+      "valorProcesso": 250056,
+      "valorEmolumentos": 2500.56,
+      "notasInternas": "PAGO EM 07/08",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "VALDENICE BEZERRA ALVES",
+      "protocolo": "47",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-03",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "VALDENICE BEZERRA ALVES",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "WANDERLEY"
+      },
+      "valorProcesso": 249690,
+      "valorEmolumentos": 2496.9,
+      "notasInternas": "PAGO EM 07/08",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "CASSIO SARMENTO DOS SANTOS",
+      "protocolo": "48",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-04",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "CASSIO SARMENTO DOS SANTOS",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JENNIFER"
+      },
+      "valorProcesso": 257320,
+      "valorEmolumentos": 2573.2,
+      "notasInternas": "pago a corretora em 10/08",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MARCELO BARROS DE OLIVEIRA JUNIOR",
+      "protocolo": "49",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-06",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MARCELO BARROS DE OLIVEIRA JUNIOR",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "CLIENTE"
+      },
+      "valorProcesso": 62107,
+      "valorEmolumentos": 621.07,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "GIANNI CEZAR DE ARAUJO SILVA",
+      "protocolo": "50",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-06",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "GIANNI CEZAR DE ARAUJO SILVA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "RUBENS"
+      },
+      "valorProcesso": 549990,
+      "valorEmolumentos": 5499.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "JOSE FRANCISCO DA SILVA",
+      "protocolo": "51",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-07",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "JOSE FRANCISCO DA SILVA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JESSICA"
+      },
+      "valorProcesso": 515490,
+      "valorEmolumentos": 5154.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MARCOS ANTÔNIO CAMELO",
+      "protocolo": "52",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-07",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MARCOS ANTÔNIO CAMELO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "MARITIAM"
+      },
+      "valorProcesso": 192714,
+      "valorEmolumentos": 1927.14,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MAIS CONSTRUTORA E INCORPORADORA LTDA",
+      "protocolo": "53",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-11",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MAIS CONSTRUTORA E INCORPORADORA LTDA",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "RONIO"
+      },
+      "valorProcesso": 972701,
+      "valorEmolumentos": 9727.01,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "NESTOR AURELIO VOTO",
+      "protocolo": "54",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-11",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "NESTOR AURELIO VOTO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOANA"
+      },
+      "valorProcesso": 500549,
+      "valorEmolumentos": 5005.49,
+      "notasInternas": "INSTITUIÇÃO DO USUFRUTO",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "ALEXANDRE ROCHA VOTO",
+      "protocolo": "55",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-11",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "ALEXANDRE ROCHA VOTO",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOANA"
+      },
+      "valorProcesso": 1931098,
+      "valorEmolumentos": 19310.98,
+      "notasInternas": "COMPRA E VENDA COM DOAÇÃO",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "IZABELA MARIA CIRNE DE MELO ELOY",
+      "protocolo": "56",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-12",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "IZABELA MARIA CIRNE DE MELO ELOY",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "JOANA"
+      },
+      "valorProcesso": 500490,
+      "valorEmolumentos": 5004.9,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    },
+    {
+      "clienteNome": "MARCELO BARROS DE OLIVEIRA JUNIOR",
+      "protocolo": "57",
+      "tipoAto": "Escritura de Compra e Venda",
+      "dataEntrada": "2026-08-12",
+      "partes": {
+        "outorganteVendedor": "Desconhecido",
+        "outorganteComprador": "MARCELO BARROS DE OLIVEIRA JUNIOR",
+        "escrevente": "aline@escrevente.pro",
+        "apresentante": "NADJA"
+      },
+      "valorProcesso": 399915,
+      "valorEmolumentos": 3999.15,
+      "notasInternas": "",
+      "statusInicial": "Entrada",
+      "observacaoStatus": "Importação inicial."
+    }
+  ]
+}

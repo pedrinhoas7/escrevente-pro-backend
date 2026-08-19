@@ -5,7 +5,8 @@ import {
     obterProcesso,
     atualizarProcesso,
     adicionarStatus,
-    removerStatus, // Adicionar esta linha
+    removerStatus,
+    deletarProcesso,
     consultarPorProtocolo,
     listarTiposAto
 } from '../controllers/processoController';
@@ -24,6 +25,7 @@ router.get('/', listarProcessos);
 router.post('/', criarProcesso);
 router.get('/:id', obterProcesso);
 router.put('/:id', atualizarProcesso);
+router.delete('/:id', deletarProcesso);
 router.post('/:id/status', adicionarStatus);
 router.delete('/:processoId/status/:statusId', removerStatus);
 

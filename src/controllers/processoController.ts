@@ -74,10 +74,18 @@ export const listarProcessos = async (req: Request, res: Response) => {
             if (targetUids.length === 0) return res.status(200).json([]);
         }
 
-        const snapshot = await db.collection('processos')
-            .where('userId', 'in', targetUids)
-            .orderBy('criadoEm', 'desc')
-            .get();
+        let snapshot;
+        if (targetUids.length === 1) {
+            snapshot = await db.collection('processos')
+                .where('userId', '==', targetUids[0])
+                .orderBy('criadoEm', 'desc')
+                .get();
+        } else {
+            snapshot = await db.collection('processos')
+                .where('userId', 'in', targetUids)
+                .orderBy('criadoEm', 'desc')
+                .get();
+        }
 
         const processos = await Promise.all(
             snapshot.docs.map(async (doc) => {

@@ -35,7 +35,12 @@ export const listarClientes = async (req: Request, res: Response) => {
             if (targetUids.length === 0) return res.status(200).json([]);
         }
 
-        const snapshot = await db.collection('clientes').where('userId', 'in', targetUids).get();
+        let snapshot;
+        if (targetUids.length === 1) {
+            snapshot = await db.collection('clientes').where('userId', '==', targetUids[0]).get();
+        } else {
+            snapshot = await db.collection('clientes').where('userId', 'in', targetUids).get();
+        }
         const clientes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         res.status(200).json(clientes);
     } catch (error) {

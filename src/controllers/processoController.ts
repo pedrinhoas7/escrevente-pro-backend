@@ -276,6 +276,13 @@ export const consultarPorProtocolo = async (req: Request, res: Response) => {
         
         const { notasInternas, userId, ...processoPublico } = processo as any;
 
+        if (processoPublico.partes?.apresentante) {
+            const clienteDoc = await db.collection('clientes').doc(processoPublico.partes.apresentante).get();
+            if (clienteDoc.exists) {
+                processoPublico.partes.apresentante = clienteDoc.data()?.nome || processoPublico.partes.apresentante;
+            }
+        }
+
         const statusSnapshot = await db.collection('processos').doc(doc.id).collection('statusProcesso').orderBy('data', 'desc').get();
         const statusHistory = statusSnapshot.docs.map(s => ({ id: s.id, ...s.data() }));
 

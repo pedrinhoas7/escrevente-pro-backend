@@ -65,6 +65,32 @@ export const criarUsuario = async (req: Request, res: Response) => {
             return res.status(400).json({ message: 'Role inválido.' });
         }
 
+        const senhaTemporaria = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+
+        const userRecord = await auth.createUser({
+            email,
+            password: senhaTemporaria,
+            displayName: nome,
+        });
+
+        const claims: any = { role };
+        if (role === 'cartorio') {
+            claims.cartorioId = userRecord.uid;
+        } else if (cartorioId) {
+            claims.cartorioId = cartorioId;
+        }
+
+        await auth.setCustomUserClaims(userRecord.uid, claims);
+
+        await db.collection('users').doc(userRecord.uid).set({
+            email,
+            nome,
+            role,
+            cartorioId: claims.cartorioId || null,
+            ativo: true,
+            criadoEm: admin.firestore.Timestamp.now(),
+        });
+
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
 
         const linkConfig = {
@@ -74,24 +100,7 @@ export const criarUsuario = async (req: Request, res: Response) => {
 
         const passwordResetLink = await auth.generatePasswordResetLink(email, linkConfig);
 
-        const claims: any = { role };
-        if (role === 'cartorio') {
-            claims.cartorioId = '';
-        } else if (cartorioId) {
-            claims.cartorioId = cartorioId;
-        }
-
-        await db.collection('pendingUsers').add({
-            email,
-            nome,
-            role,
-            cartorioId: cartorioId || null,
-            passwordResetLink,
-            criadoEm: admin.firestore.Timestamp.now(),
-            status: 'pending',
-        });
-
-        res.status(201).json({ message: 'Email de convite enviado com sucesso.', email, resetLink: passwordResetLink });
+        res.status(201).json({ message: 'Usuário criado e email de definição de senha enviado.', email, resetLink: passwordResetLink });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao criar usuário', error: (error as Error).message });
     }

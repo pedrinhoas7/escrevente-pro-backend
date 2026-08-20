@@ -91,14 +91,7 @@ export const criarUsuario = async (req: Request, res: Response) => {
             criadoEm: admin.firestore.Timestamp.now(),
         });
 
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-
-        const linkConfig = {
-            url: `${frontendUrl}/login`,
-            handleCodeInApp: false,
-        };
-
-        const passwordResetLink = await auth.generatePasswordResetLink(email, linkConfig);
+        const passwordResetLink = await auth.generatePasswordResetLink(email);
 
         res.status(201).json({ message: 'Usuário criado e email de definição de senha enviado.', email, resetLink: passwordResetLink });
     } catch (error) {
@@ -223,12 +216,7 @@ export const recuperarSenha = async (req: Request, res: Response) => {
             return res.status(400).json({ message: 'Email é obrigatório.' });
         }
 
-        const linkConfig = {
-            url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/login`,
-            handleCodeInApp: false,
-        };
-
-        const link = await auth.generatePasswordResetLink(email, linkConfig);
+        const link = await auth.generatePasswordResetLink(email);
 
         res.status(200).json({ message: 'Email de recuperação enviado com sucesso.' });
     } catch (error) {

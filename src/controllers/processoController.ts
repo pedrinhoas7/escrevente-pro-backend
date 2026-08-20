@@ -65,6 +65,23 @@ export const listarProcessos = async (req: Request, res: Response) => {
 
         let targetUids: string[] = [userId];
 
+        if (userRole === 'admin') {
+            const snapshot = await db.collection('processos').orderBy('criadoEm', 'desc').get();
+            const processos = await Promise.all(
+                snapshot.docs.map(async (doc) => {
+                    const statusSnapshot = await db.collection('processos').doc(doc.id).collection('statusProcesso').orderBy('data', 'desc').get();
+                    const statusHistory = statusSnapshot.docs.map(s => ({ id: s.id, ...s.data() }));
+                    let processoFormatado: any = { id: doc.id, ...doc.data(), statusHistory };
+                    if (processoFormatado.valorEmolumentos !== undefined) {
+                        processoFormatado.comissaoApresentante = processoFormatado.valorEmolumentos * 0.30;
+                        processoFormatado.comissaoEscrevente = processoFormatado.valorEmolumentos * 0.10;
+                    }
+                    return processoFormatado;
+                })
+            );
+            return res.status(200).json(processos);
+        }
+
         if (userRole === 'cartorio' && cartorioId) {
             const usersSnapshot = await db.collection('users')
                 .where('cartorioId', '==', cartorioId)

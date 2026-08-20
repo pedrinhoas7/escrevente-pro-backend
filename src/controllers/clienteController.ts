@@ -26,6 +26,12 @@ export const listarClientes = async (req: Request, res: Response) => {
 
         let targetUids: string[] = [userId];
 
+        if (userRole === 'admin') {
+            const snapshot = await db.collection('clientes').get();
+            const clientes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            return res.status(200).json(clientes);
+        }
+
         if (userRole === 'cartorio' && cartorioId) {
             const usersSnapshot = await db.collection('users')
                 .where('cartorioId', '==', cartorioId)

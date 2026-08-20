@@ -1,22 +1,7 @@
 import { Request, Response } from 'express';
 import { auth, db } from '../config/firebase';
 import * as admin from 'firebase-admin';
-import axios from 'axios';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const API_KEY = process.env.FIREBASE_API_KEY;
-
-const enviarEmailResetSenha = async (email: string): Promise<void> => {
-    await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${API_KEY}`,
-        {
-            requestType: 'PASSWORD_RESET',
-            email,
-        }
-    );
-};
+import { enviarEmail } from '../services/emailService';
 
 interface UsuarioAdmin {
     uid: string;
@@ -107,9 +92,17 @@ export const criarUsuario = async (req: Request, res: Response) => {
             criadoEm: admin.firestore.Timestamp.now(),
         });
 
-        await enviarEmailResetSenha(email);
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+        const firebaseLink = await auth.generatePasswordResetLink(email, {
+            url: `${frontendUrl}/login`,
+            handleCodeInApp: false,
+        });
+        const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
+        const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
+        const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
+        await enviarEmail(email, nome, resetLink, 'convite');
 
-        res.status(201).json({ message: 'Usuário criado e email de definição de senha enviado.', email });
+        res.status(201).json({ message: 'Usuário criado e email enviado com sucesso.', email });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao criar usuário', error: (error as Error).message });
     }
@@ -232,7 +225,21 @@ export const recuperarSenha = async (req: Request, res: Response) => {
             return res.status(400).json({ message: 'Email é obrigatório.' });
         }
 
-        await enviarEmailResetSenha(email);
+        try {
+            const userRecord = await auth.getUserByEmail(email);
+            const nome = userRecord.displayName || email;
+            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const firebaseLink = await auth.generatePasswordResetLink(email, {
+                url: `${frontendUrl}/login`,
+                handleCodeInApp: false,
+            });
+            const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
+            const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
+            const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
+            await enviarEmail(email, nome, resetLink, 'reset');
+        } catch (e) {
+            return res.status(200).json({ message: 'Email de recuperação enviado com sucesso.' });
+        }
 
         res.status(200).json({ message: 'Email de recuperação enviado com sucesso.' });
     } catch (error) {

@@ -19,8 +19,6 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
 
     const token = authHeader.split('Bearer ')[1];
 
-    console.log(`Debug Auth Middleware: admin.apps.length = ${admin.apps.length}`);
-
     try {
         const decodedToken = await admin.auth().verifyIdToken(token);
         req.user = decodedToken;
@@ -29,4 +27,14 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
         console.error('Erro de autenticação:', error);
         return res.status(403).json({ message: 'Token inválido ou expirado.' });
     }
+};
+
+export const requireRole = (roles: string[]) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        const userRole = (req.user as any)?.role || 'usuario';
+        if (!roles.includes(userRole)) {
+            return res.status(403).json({ message: 'Acesso negado. Permissão insuficiente.' });
+        }
+        next();
+    };
 };

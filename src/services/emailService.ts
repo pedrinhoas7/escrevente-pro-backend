@@ -5,7 +5,7 @@ dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM_EMAIL = 'Escrevente Pro <no-reply@escrevente.pro>';
+const FROM_EMAIL = 'Escrevente Pro <onboarding@resend.dev>';
 
 const emailTemplate = (nome: string, link: string, tipo: 'convite' | 'reset') => {
     const titulo = tipo === 'convite' ? 'Bem-vindo ao Escrevente Pro' : 'Redefina sua senha';

@@ -93,10 +93,7 @@ export const criarUsuario = async (req: Request, res: Response) => {
         });
 
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-        const firebaseLink = await auth.generatePasswordResetLink(email, {
-            url: `${frontendUrl}/login`,
-            handleCodeInApp: false,
-        });
+        const firebaseLink = await auth.generatePasswordResetLink(email);
         const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
         const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
         const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
@@ -229,10 +226,7 @@ export const recuperarSenha = async (req: Request, res: Response) => {
             const userRecord = await auth.getUserByEmail(email);
             const nome = userRecord.displayName || email;
             const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-            const firebaseLink = await auth.generatePasswordResetLink(email, {
-                url: `${frontendUrl}/login`,
-                handleCodeInApp: false,
-            });
+            const firebaseLink = await auth.generatePasswordResetLink(email);
             const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
             const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
             const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;

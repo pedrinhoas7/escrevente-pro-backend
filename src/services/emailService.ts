@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const apiKey = process.env.RESEND_API_KEY;
+const resend = apiKey ? new Resend(apiKey) : null;
 
 const FROM_EMAIL = 'Escrevente Pro <onboarding@resend.dev>';
 
@@ -89,12 +90,22 @@ export const enviarEmail = async (
     link: string,
     tipo: 'convite' | 'reset'
 ) => {
+    if (!resend) {
+        console.error('RESEND_API_KEY nao configurado. Email nao enviado para:', to);
+        throw new Error('Servico de email nao configurado.');
+    }
+
     const titulo = tipo === 'convite' ? 'Bem-vindo ao Escrevente Pro' : 'Redefinição de senha';
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
         from: FROM_EMAIL,
         to,
         subject: titulo,
         html: emailTemplate(nome, link, tipo),
     });
+
+    if (error) {
+        console.error('Erro ao enviar email:', error);
+        throw new Error('Falha ao enviar email.');
+    }
 };

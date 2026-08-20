@@ -97,9 +97,22 @@ export const criarUsuario = async (req: Request, res: Response) => {
         const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
         const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
         const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
-        await enviarEmail(email, nome, resetLink, 'convite');
 
-        res.status(201).json({ message: 'Usuário criado e email enviado com sucesso.', email });
+        let emailEnviado = true;
+        try {
+            await enviarEmail(email, nome, resetLink, 'convite');
+        } catch (emailError) {
+            console.error('Usuario criado mas falhou envio de email:', emailError);
+            emailEnviado = false;
+        }
+
+        res.status(201).json({
+            message: emailEnviado
+                ? 'Usuário criado e email enviado com sucesso.'
+                : 'Usuário criado, mas houve falha no envio do email. Gere um novo link de reset.',
+            email,
+            emailEnviado,
+        });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao criar usuário', error: (error as Error).message });
     }
@@ -222,22 +235,26 @@ export const recuperarSenha = async (req: Request, res: Response) => {
             return res.status(400).json({ message: 'Email é obrigatório.' });
         }
 
+        let userRecord;
         try {
-            const userRecord = await auth.getUserByEmail(email);
-            const nome = userRecord.displayName || email;
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-            const firebaseLink = await auth.generatePasswordResetLink(email);
-            const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
-            const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
-            const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
-            await enviarEmail(email, nome, resetLink, 'reset');
+            userRecord = await auth.getUserByEmail(email);
         } catch (e) {
-            return res.status(200).json({ message: 'Email de recuperação enviado com sucesso.' });
+            return res.status(200).json({ message: 'Se o email existir, você receberá um link de recuperação.' });
         }
+
+        const nome = userRecord.displayName || email;
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+        const firebaseLink = await auth.generatePasswordResetLink(email);
+        const oobCodeMatch = firebaseLink.match(/oobCode=([^&]+)/);
+        const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
+        const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
+
+        await enviarEmail(email, nome, resetLink, 'reset');
 
         res.status(200).json({ message: 'Email de recuperação enviado com sucesso.' });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao enviar email de recuperação', error: (error as Error).message });
+        console.error('Erro ao enviar email de recuperação:', error);
+        res.status(500).json({ message: 'Erro ao enviar email de recuperação. Tente novamente.' });
     }
 };
 

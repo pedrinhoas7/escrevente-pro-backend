@@ -159,8 +159,8 @@ export const criarProcesso = async (req: Request, res: Response) => {
             ...rest,
             tipoAto,
             dataEntrada: admin.firestore.Timestamp.fromDate(new Date(dataEntrada)),
-            valorProcesso: valorProcesso ? Number(valorProcesso) : undefined,
-            valorEmolumentos: valorEmolumentos ? Number(valorEmolumentos) : undefined,
+            ...(valorProcesso !== undefined && valorProcesso !== '' && { valorProcesso: Number(valorProcesso) }),
+            ...(valorEmolumentos !== undefined && valorEmolumentos !== '' && { valorEmolumentos: Number(valorEmolumentos) }),
             criadoEm: admin.firestore.Timestamp.now(),
             userId: userId,
         };

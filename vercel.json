@@ -1,12 +1,8 @@
 {
-  "version": 2,
-  "buildCommand": "npx tsc",
-  "functions": {
-    "dist/index.js": {
-      "maxDuration": 30
-    }
-  },
+  "buildCommand": "tsc",
+  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/dist/index.js" }
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/api" }
   ]
 }

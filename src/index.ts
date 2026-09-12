@@ -31,6 +31,10 @@ app.get('/', (req, res) => {
     res.send('Escrevente Pro API - Online');
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando na porta ${PORT}`);
+    });
+}
+
+export default app;

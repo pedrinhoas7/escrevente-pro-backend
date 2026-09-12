@@ -2,6 +2,19 @@ import { Request, Response } from 'express';
 import { auth, db } from '../config/firebase';
 import * as admin from 'firebase-admin';
 import { enviarEmail } from '../services/emailService';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;
+
+const enviarResetFirebase = async (email: string): Promise<void> => {
+    const axios = await import('axios');
+    await axios.default.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${FIREBASE_API_KEY}`,
+        { requestType: 'PASSWORD_RESET', email }
+    );
+};
 
 interface UsuarioAdmin {
     uid: string;
@@ -102,14 +115,19 @@ export const criarUsuario = async (req: Request, res: Response) => {
         try {
             await enviarEmail(email, nome, resetLink, 'convite');
         } catch (emailError) {
-            console.error('Usuario criado mas falhou envio de email:', emailError);
-            emailEnviado = false;
+            console.error('Resend falhou, tentando Firebase sendOobCode:', emailError);
+            try {
+                await enviarResetFirebase(email);
+            } catch (firebaseError) {
+                console.error('Firebase tambem falhou:', firebaseError);
+                emailEnviado = false;
+            }
         }
 
         res.status(201).json({
             message: emailEnviado
                 ? 'Usuário criado e email enviado com sucesso.'
-                : 'Usuário criado, mas houve falha no envio do email. Gere um novo link de reset.',
+                : 'Usuário criado, mas houve falha no envio do email.',
             email,
             emailEnviado,
         });
@@ -249,7 +267,12 @@ export const recuperarSenha = async (req: Request, res: Response) => {
         const oobCode = oobCodeMatch ? oobCodeMatch[1] : '';
         const resetLink = `${frontendUrl}/redefinir-senha?oobCode=${oobCode}`;
 
-        await enviarEmail(email, nome, resetLink, 'reset');
+        try {
+            await enviarEmail(email, nome, resetLink, 'reset');
+        } catch (emailError) {
+            console.error('Resend falhou, tentando Firebase sendOobCode:', emailError);
+            await enviarResetFirebase(email);
+        }
 
         res.status(200).json({ message: 'Email de recuperação enviado com sucesso.' });
     } catch (error) {

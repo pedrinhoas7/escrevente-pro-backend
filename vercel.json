@@ -1,8 +1,8 @@
 {
-  "buildCommand": "tsc",
+  "version": 2,
+  "buildCommand": "npx tsc",
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/(.*)", "destination": "/api" }
+    { "source": "/(.*)", "destination": "/index.js" }
   ]
 }

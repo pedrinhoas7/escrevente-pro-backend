@@ -1,10 +1,13 @@
 import { Resend } from 'resend';
 import dotenv from 'dotenv';
+import axios from 'axios';
 
 dotenv.config();
 
 const apiKey = process.env.RESEND_API_KEY;
 const resend = apiKey ? new Resend(apiKey) : null;
+
+const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;
 
 const FROM_EMAIL = 'Escrevente Pro <onboarding@resend.dev>';
 
@@ -90,22 +93,30 @@ export const enviarEmail = async (
     link: string,
     tipo: 'convite' | 'reset'
 ) => {
-    if (!resend) {
-        console.error('RESEND_API_KEY nao configurado. Email nao enviado para:', to);
-        throw new Error('Servico de email nao configurado.');
-    }
-
     const titulo = tipo === 'convite' ? 'Bem-vindo ao Escrevente Pro' : 'Redefinição de senha';
 
-    const { error } = await resend.emails.send({
-        from: FROM_EMAIL,
-        to,
-        subject: titulo,
-        html: emailTemplate(nome, link, tipo),
-    });
-
-    if (error) {
-        console.error('Erro ao enviar email:', error);
-        throw new Error('Falha ao enviar email.');
+    if (resend) {
+        try {
+            const { error } = await resend.emails.send({
+                from: FROM_EMAIL,
+                to,
+                subject: titulo,
+                html: emailTemplate(nome, link, tipo),
+            });
+            if (!error) return;
+            console.error('Erro Resend, tentando Firebase:', error);
+        } catch (e) {
+            console.error('Resend falhou, tentando Firebase:', e);
+        }
     }
+
+    if (FIREBASE_API_KEY) {
+        await axios.post(
+            `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${FIREBASE_API_KEY}`,
+            { requestType: 'PASSWORD_RESET', email: to }
+        );
+        return;
+    }
+
+    throw new Error('Nenhum servico de email configurado.');
 };
